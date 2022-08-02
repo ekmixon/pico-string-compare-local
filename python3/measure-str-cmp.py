@@ -50,7 +50,7 @@ def measure_all_str_cmp(tests, title):
     zero_time_spent_count = 0
     temp_measurements = {}
 
-    output_filename = 'db-%s.csv' % title
+    output_filename = f'db-{title}.csv'
     db = open(output_filename, 'w')
 
     # Init temp measurement store
@@ -77,11 +77,7 @@ def measure_all_str_cmp(tests, title):
             # trick that reduces zero_time_spent_count to zero.
             start = ltime() * 10000000
 
-            if str_a == str_b:
-                temp = True
-            else:
-                temp = False
-
+            temp = str_a == str_b
             end = ltime() * 10000000
             time_spent = end - start
 

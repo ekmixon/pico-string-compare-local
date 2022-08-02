@@ -18,7 +18,7 @@ def load_results_from_csv(file_name):
     #
     name, extension = file_name.rsplit('.', 1)
     name += '-sorted'
-    sorted_file_name = '%s.%s' % (name, extension)
+    sorted_file_name = f'{name}.{extension}'
 
     sort_file_dir = dirname(file_name)
 
@@ -90,9 +90,9 @@ def analyze_differences(measurements):
     measurement_100 = measurements[100][4] * 1e9
     diff_3 = (measurement_100 - measurement_7) / samples
 
-    print('Time difference between #8 and #7: %s' % diff_1)
-    print('Time difference between #16 and #15: %s' % diff_2)
-    print('Time difference between #100 and #7: %s' % diff_3)
+    print(f'Time difference between #8 and #7: {diff_1}')
+    print(f'Time difference between #16 and #15: {diff_2}')
+    print(f'Time difference between #100 and #7: {diff_3}')
 
 
 def create_graph(measurements, samples, language, title, stats_method_name):
@@ -121,12 +121,15 @@ def create_graph(measurements, samples, language, title, stats_method_name):
 
     fig = go.Figure(data=[trace], layout=layout)
 
-    plot_url = py.plot(fig,
-                       filename='%s-str-cmp-%s' % (language, title),
-                       fileopt='new',
-                       auto_open=False)
+    plot_url = py.plot(
+        fig,
+        filename=f'{language}-str-cmp-{title}',
+        fileopt='new',
+        auto_open=False,
+    )
+
 
     plot_url += '.embed'
-    print('Plot URL: %s' % plot_url)
+    print(f'Plot URL: {plot_url}')
 
     subprocess.check_output(['google-chrome-stable', plot_url])

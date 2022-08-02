@@ -29,7 +29,7 @@ if __name__ == '__main__':
         stats_method = STATS_METHODS[stats_method_name]
     except KeyError:
         valid_methods = ', '.join(STATS_METHODS.keys())
-        print('Invalid stats method. Choose one of %s.' % valid_methods)
+        print(f'Invalid stats method. Choose one of {valid_methods}.')
         sys.exit(1)
 
     measurements = []

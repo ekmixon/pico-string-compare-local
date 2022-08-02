@@ -71,11 +71,7 @@ def measure_all_str_cmp(tests):
         for str_a, str_b in tests:
             start = ltime()
 
-            if str_a == str_b:
-                temp = True
-            else:
-                temp = False
-
+            temp = str_a == str_b
             end = ltime()
             temp_measurements[str_b] += end - start
 
@@ -157,7 +153,7 @@ def create_graph(measurements):
     data = [trace]
 
     plot_url = py.plot(data, filename='python-str-cmp', fileopt='new')
-    print('Plot URL: %s' % plot_url)
+    print(f'Plot URL: {plot_url}')
 
     # Plot offline
     #plotly.offline.plot(data, filename='python-str-cmp.html')
